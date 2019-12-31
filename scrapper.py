@@ -20,12 +20,12 @@ class Rating:
         return "\n".join((line_1, line_2, line_3, line_4, ""))
 
 
-rating = re.compile(r'(.*) (\d{4}).*\s'                             # tytuł i rok produkcji
+rating = re.compile(r'(.*) (\d{4}).*\s'                                                         # tytuł i rok produkcji
                     r'(?:Oglądaj .*\s)?'
-                    r'(\d,\d) '                                     # średnia
-                    r'(.*) oce(?:n|ny)\s'                           # liczba ocen
-                    r'(dzisiaj|wczoraj|\d{1,2} [A-Za-zzżźćńółęąśŻŹĆĄŚĘŁÓŃ]*(?: \d{4})?)\s'     # dzień i miesiąc oceny
-                    r'(\d{1,2})')                                   # ocena
+                    r'(\d,\d) '                                                                 # średnia
+                    r'(.*) oce(?:n|ny)\s'                                                       # liczba ocen
+                    r'(dzisiaj|wczoraj|\d{1,2} [A-Za-zzżźćńółęąśŻŹĆĄŚĘŁÓŃ]*(?: \d{4})?)\s'      # dzień i miesiąc oceny
+                    r'(\d{1,2})')                                                               # ocena
 
 count_pages = re.compile("filmweb.pl")
 
