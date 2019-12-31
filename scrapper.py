@@ -35,7 +35,7 @@ class Rating:
 rating = re.compile(r'(.*) (\d{4}).*\s'                                                         # tytuł i rok produkcji
                     r'(?:Oglądaj .*\s)?'
                     r'(\d,\d) '                                                                 # średnia
-                    r'(.*) oceny?\b\s'                                                       # liczba ocen
+                    r'(.*) oceny?\b\s'                                                          # liczba ocen
                     r'(dzisiaj|wczoraj|\d{1,2} [A-Za-zzżźćńółęąśŻŹĆĄŚĘŁÓŃ]*(?: \d{4})?)\s'      # dzień i miesiąc oceny
                     r'(\d{1,2})')                                                               # ocena
 
