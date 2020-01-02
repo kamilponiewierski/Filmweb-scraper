@@ -55,8 +55,6 @@ class WantToSee:
         return r
 
 
-
-
 def main():
     count_pages = re.compile("filmweb.pl")
 
