@@ -35,8 +35,7 @@ class Rating:
         date_rated = match.group(5)
         personal_rating = match.group(6)
 
-        r = Rating(title, release_year, ratings_average, ratings_count, date_rated, personal_rating)
-        return r
+        return Rating(title, release_year, ratings_average, ratings_count, date_rated, personal_rating)
 
 
 class WantToSee:
@@ -51,8 +50,7 @@ class WantToSee:
 
     @staticmethod
     def create_from_match(match):
-        r = WantToSee(match.group(1), match(2))
-        return r
+        return WantToSee(match.group(1), match(2))
 
 
 def main():
