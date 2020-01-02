@@ -32,28 +32,32 @@ class Rating:
         return r
 
 
-rating = re.compile(r'(.*) (\d{4}).*\s'                                                         # tytuł i rok produkcji
-                    r'(?:Oglądaj .*\s)?'
-                    r'(\d,\d) '                                                                 # średnia
-                    r'(.*) oceny?\b\s'                                                          # liczba ocen
-                    r'(dzisiaj|wczoraj|\d{1,2} \w*(?: \d{4})?)\s'                               # dzień i miesiąc oceny
-                    r'(\d{1,2})', flags=re.U)                                                   # ocena
+def main():
+    rating = re.compile(r'(.*) (\d{4}).*\s'                                                     # tytuł i rok produkcji
+                        r'(?:Oglądaj .*\s)?'
+                        r'(\d,\d) '                                                             # średnia
+                        r'(.*) oceny?\b\s'                                                      # liczba ocen
+                        r'(dzisiaj|wczoraj|\d{1,2} \w*(?: \d{4})?)\s'                           # dzień i miesiąc oceny
+                        r'(\d{1,2})', flags=re.U)                                               # ocena
 
-count_pages = re.compile("filmweb.pl")
+    count_pages = re.compile("filmweb.pl")
 
-file = open("in", 'r', encoding='utf-8')
-text = file.read()
-file.close()
+    file = open("in", 'r', encoding='utf-8')
+    text = file.read()
+    file.close()
 
-matches = rating.finditer(text)
-page_count = len(count_pages.findall(text))
+    matches = rating.finditer(text)
+    page_count = len(count_pages.findall(text))
 
-counter = 0
+    counter = 0
+
+    for match in matches:
+        counter += 1
+        r = Rating.create_rating_from_match(match)
+        print(str(r))
+
+    print("Znaleziono " + str(counter) + " filmów na " + str(page_count) + " stronach")
 
 
-for match in matches:
-    counter += 1
-    r = Rating.create_rating_from_match(match)
-    print(str(r))
-
-print("Znaleziono " + str(counter) + " filmów na " + str(page_count) + " stronach")
+if __name__ == '__main__':
+    main()
