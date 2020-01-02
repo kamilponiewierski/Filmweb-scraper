@@ -36,8 +36,8 @@ rating = re.compile(r'(.*) (\d{4}).*\s'                                         
                     r'(?:Oglądaj .*\s)?'
                     r'(\d,\d) '                                                                 # średnia
                     r'(.*) oceny?\b\s'                                                          # liczba ocen
-                    r'(dzisiaj|wczoraj|\d{1,2} [A-Za-zzżźćńółęąśŻŹĆĄŚĘŁÓŃ]*(?: \d{4})?)\s'      # dzień i miesiąc oceny
-                    r'(\d{1,2})')                                                               # ocena
+                    r'(dzisiaj|wczoraj|\d{1,2} \w*(?: \d{4})?)\s'                               # dzień i miesiąc oceny
+                    r'(\d{1,2})', flags=re.U)                                                   # ocena
 
 count_pages = re.compile("filmweb.pl")
 
