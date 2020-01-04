@@ -50,7 +50,7 @@ class WantToSee:
 
     @staticmethod
     def create_from_match(match):
-        return WantToSee(match.group(1), match(2))
+        return WantToSee(match.group(1), match.group(2))
 
 
 def main():
@@ -71,6 +71,7 @@ def main():
         print(str(r))
 
     print("Znaleziono " + str(counter) + " filmów na " + str(page_count) + " stronach")
+    wait = input("Wciśnij ENTER aby zakończyć")
 
 
 if __name__ == '__main__':
