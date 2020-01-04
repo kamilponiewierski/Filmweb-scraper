@@ -94,7 +94,6 @@ class WantToSee:
 
 def main():
     count_pages = re.compile("filmweb.pl")
-    text = ""
 
     try:
         with open("in.txt", 'r', encoding='utf-8') as file:
