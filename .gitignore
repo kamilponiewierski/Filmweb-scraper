@@ -1,7 +1,7 @@
-in
-in2
-out
-out2
+in.txt
+in2.txt
+out.txt
+out2.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
