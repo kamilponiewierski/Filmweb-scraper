@@ -1,6 +1,6 @@
 import re
 
-from rating import Rating
+from Rating import Rating
 
 
 def main():
