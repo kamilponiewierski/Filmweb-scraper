@@ -1,10 +1,10 @@
 import re
 
-from Rating import Rating
+from filmweb import Rating
 
 
 def main():
-    count_pages = re.compile("filmweb.pl")
+    count_pages_regex = re.compile("filmweb.pl")
 
     try:
         with open("in.txt", 'r', encoding='utf-8') as file:
@@ -14,7 +14,7 @@ def main():
         exit(1)
 
     matches = Rating.regex.finditer(text)
-    page_count = len(count_pages.findall(text))
+    page_count = len(count_pages_regex.findall(text))
 
     counter = 0
 

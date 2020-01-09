@@ -1,7 +1,8 @@
-in.txt
-in2.txt
-out.txt
-out2.txt
+/in.txt
+/out.txt
+/wishlist1.txt
+/wishlist2.txt
+/wishlistout.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
