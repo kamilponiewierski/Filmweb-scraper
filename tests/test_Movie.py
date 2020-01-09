@@ -1,5 +1,5 @@
 from unittest import TestCase
-from Movie import Movie
+from filmweb import Movie
 
 
 class TestMovie(TestCase):
