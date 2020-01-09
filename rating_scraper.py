@@ -1,6 +1,6 @@
 import re
 
-from Rating import Rating
+from filmweb import Rating
 
 
 def main():
