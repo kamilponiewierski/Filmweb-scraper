@@ -11,9 +11,9 @@ class TestRating(TestCase):
             for match in matches:
                 movie = Rating.Rating.create_rating_from_match(match)
                 if movie.movie.title == "Han Solo: Gwiezdne wojny - historie":
-                    self.assertEqual(movie.personal_rating, 7)
+                    self.assertEqual(movie.personal_rating, 7, "Rating is int")
                     self.assertEqual(movie.date_rated, "22 września 2018")
-                    self.assertEqual(movie.ratings_average, "6,8")
+                    self.assertEqual(movie.ratings_average, "6,8", "Average is str")
 
     def test_to_csv(self):
         test = Rating.Rating(Movie("Niebo i piekło", "1963"), "8,0", "2 241", "17 września 2018", 9)
