@@ -1,7 +1,7 @@
 import re
 
 
-class WantToSee:
+class WantToSee(object):
     regex = re.compile(r'(?:.*\n)(.* \d{4})\s')
 
     def __init__(self, title, year):
