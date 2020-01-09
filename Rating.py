@@ -16,10 +16,6 @@ class Rating:
                        r'(\d{1,2})', flags=re.U)  # ocena
     """Pattern object, used for finding the movies"""
 
-    @staticmethod
-    def datetime_into_date(date: datetime.datetime):
-        return str(date.day) + ' ' + int_into_polish_month(date.month) + ' ' + str(date.year)
-
     def __init__(self, movie: Movie.Movie, ratings_average, ratings_count: str, date_rated: str, rating: int):
         self.movie = movie
         self.ratings_average = ratings_average
@@ -53,6 +49,10 @@ class Rating:
                           self.ratings_count,
                           self.date_rated,
                           str(self.personal_rating)))
+
+    @staticmethod
+    def datetime_into_date(date: datetime.datetime):
+        return str(date.day) + ' ' + int_into_polish_month(date.month) + ' ' + str(date.year)
 
     @staticmethod
     def create_rating_from_match(match: typing.Match):
