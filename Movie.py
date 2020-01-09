@@ -9,6 +9,8 @@ class Movie:
     def __eq__(self, other):
         if isinstance(other, self.__class__):
             return other.release_year == self.release_year and other.title == self.title
+        else:
+            return False
 
     def __hash__(self):
         return hash((self.title, self.release_year))
