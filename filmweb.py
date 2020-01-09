@@ -2,7 +2,64 @@ import datetime
 import html
 import re
 import typing
-import Movie
+
+
+class WantToSee(object):
+    regex = re.compile(r'(.*)(.* \d{4})\s'  # tytuł i rok
+                       r'(?:.*\s)?'  # tytuł oryginalny
+                       r'((\d{1,2} godz.)* ?(\d{1,2} min.)*)\s'  # czas trwania
+                       r'(?:Oglądaj.*\s)?'  # reklama
+                       r'(\d,\d) ([\d ]*)oceny?')  # średnia, liczba ocen
+
+    def __init__(self, title, year):
+        self.title = title
+        self.year = year
+
+    def __str__(self):
+        return str(self.title) + ' ' + str(self.year)
+
+    @staticmethod
+    def create_from_match(match):
+        return WantToSee(match.group(1), match.group(2))
+
+
+class Movie:
+    def __init__(self, title: str, release_year: str):
+        self.title = title
+        self.release_year = release_year
+
+    def __str__(self):
+        return self.title + ", " + self.release_year
+
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return other.release_year == self.release_year and other.title == self.title
+        else:
+            return False
+
+    def __hash__(self):
+        return hash((self.title, self.release_year))
+
+    def to_csv(self):
+        # quoted in case of commas in the title
+        return "\"" + self.title + "\", " + self.release_year
+
+    @staticmethod
+    def intersection(list_1: list, list_2: list):
+        return set(list_1).intersection(list_2)
+
+    @staticmethod
+    def intersection_of_many(list_of_lists: list):
+        if len(list_of_lists) == 0:
+            return set()
+        else:
+            acc = set(list_of_lists[0])
+            list_of_lists.pop(0)
+            while len(list_of_lists) != 0:
+                acc = acc.intersection(list_of_lists[0])
+                list_of_lists.pop(0)
+
+            return acc
 
 
 class Rating:
@@ -16,7 +73,7 @@ class Rating:
                        r'(\d{1,2})', flags=re.U)  # ocena
     """Pattern object, used for finding the movies"""
 
-    def __init__(self, movie: Movie.Movie, ratings_average, ratings_count: str, date_rated: str, rating: int):
+    def __init__(self, movie: Movie, ratings_average, ratings_count: str, date_rated: str, rating: int):
         self.movie = movie
         self.ratings_average = ratings_average
         self.ratings_count = ratings_count
@@ -58,7 +115,7 @@ class Rating:
     def create_rating_from_match(match: typing.Match):
         title = html.unescape(match.group(1))
         release_year = match.group(2)
-        movie = Movie.Movie(title, release_year)
+        movie = Movie(title, release_year)
 
         ratings_average = match.group(3)
         ratings_count = match.group(4)
