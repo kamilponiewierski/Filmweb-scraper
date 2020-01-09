@@ -2,6 +2,8 @@ in.txt
 in2.txt
 out.txt
 out2.txt
+wishlist.txt
+wishlistout.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
