@@ -27,7 +27,7 @@ def main():
                     print(str(movie))
 
     except FileNotFoundError:
-        print("Some file was not found")
+        print("File wishlist1.txt or wishlist2.txt was not found")
 
 
 def text_to_movie_list(file: typing.TextIO):

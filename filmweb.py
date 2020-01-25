@@ -68,7 +68,7 @@ class Rating:
     regex = re.compile(r'(.*) (\d{4}).*\s'  # tytuł i rok produkcji
                        r'(?:Oglądaj .*\s)?'  # opcjonalna reklama Filmwebu
                        r'(\d,\d) '  # średnia
-                       r'(.*) oceny?\b\s'  # liczba ocen
+                       r'(.*) oceny? społeczności\s'  # liczba ocen
                        r'(dzisiaj|wczoraj|\d{1,2} \w*(?: \d{4})?)\s'  # dzień i miesiąc oceny
                        r'(\d{1,2})', flags=re.U)  # ocena
     """Pattern object, used for finding the movies"""
